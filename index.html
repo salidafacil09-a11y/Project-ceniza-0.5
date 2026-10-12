@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0f1512">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Ceniza · Supervivencia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game"></div>
+
+  <div id="hud">
+    <div class="bar"><span>Salud</span><div id="hp"><div id="hp-fill"></div></div></div>
+    <div class="bar"><span>Aliento</span><div id="st"><div id="st-fill"></div></div></div>
+    <div id="noise" class="n0">Sigilo</div>
+    <div id="status"></div>
+    <div id="chasers"></div>
+  </div>
+
+  <div id="weapon">
+    <div id="w-name">Manos</div>
+    <div id="w-grip"></div>
+    <div id="w-condbar"><div id="w-cond"></div></div>
+    <div id="w-carry">Espalda libre · Bolsillos: 0</div>
+    <div id="w-btns">
+      <button id="btn-grip" class="pill" type="button">1/2 manos</button>
+      <button id="btn-drop" class="pill" type="button">Soltar</button>
+    </div>
+  </div>
+
+  <div id="crosshair"></div>
+  <div id="hitmark"></div>
+  <div id="prompt" class="hidden"></div>
+  <div id="toasts"></div>
+  <div id="debug" class="hidden"></div>
+  <div id="damage"></div>
+
+  <div id="touch-ui">
+    <div id="joy-zone"></div>
+    <div id="look-zone"></div>
+    <div id="joy-hint"></div>
+    <div id="joy-base"><div id="joy-knob"></div></div>
+    <button id="btn-pause" class="tbtn" type="button" aria-label="Pausa">II</button>
+    <button id="btn-cycle" class="tbtn" type="button">Arma</button>
+    <button id="btn-use" class="tbtn" type="button">Usar</button>
+    <button id="btn-run" class="tbtn" type="button">Correr</button>
+    <button id="btn-crouch" class="tbtn" type="button">Agachar</button>
+    <button id="btn-shove" class="tbtn" type="button">Empujar</button>
+    <button id="btn-attack" class="tbtn" type="button">Atacar</button>
+  </div>
+
+  <div id="start" class="screen">
+    <div class="panel">
+      <h1>Ceniza</h1>
+      <p class="lead">El pueblo está en silencio, pero no vacío. Los muertos caminan despacio, te oyen correr y no se cansan.</p>
+      <ul class="controls" id="controls-pc">
+        <li><b>Mover</b> WASD · Shift para correr · C para agacharte</li>
+        <li><b>Mirar</b> ratón (haz clic en la pantalla para capturarlo)</li>
+        <li><b>Atacar</b> clic izquierdo · <b>Apuntar</b> mantener clic derecho</li>
+        <li><b>Empujar o pisotear</b> Espacio</li>
+        <li><b>Usar</b> E (puertas, ventanas, vallas, luces, armas)</li>
+        <li><b>Cambiar arma</b> Q o rueda · <b>Una o dos manos</b> V · <b>Soltar arma</b> G</li>
+        <li><b>Pausa</b> Esc o P</li>
+        <li><b>Mando</b> sticks, RT atacar, LT apuntar, A usar, X empujar, Y arma, LB una o dos manos, Select soltar, B correr, R3 agacharte</li>
+      </ul>
+      <ul class="controls hidden" id="controls-touch">
+        <li><b>Mover</b> arrastra con el pulgar izquierdo</li>
+        <li><b>Mirar</b> arrastra con el pulgar derecho</li>
+        <li><b>Botones</b> Atacar, Empujar, Usar, Correr, Agachar y Arma</li>
+        <li><b>Arriba a la derecha</b> una o dos manos, y soltar el arma</li>
+      </ul>
+      <p id="start-msg" class="note">Correr hace ruido; agachado casi no te ven ni te oyen. Los mordiscos infectan y no tienen cura.</p>
+      <button id="btn-start" class="primary" type="button">Entrar al pueblo</button>
+    </div>
+  </div>
+
+  <div id="paused" class="screen hidden">
+    <div class="panel">
+      <h1>Pausa</h1>
+      <p class="lead">El mundo espera. Los zombis también.</p>
+      <button id="btn-resume" class="primary" type="button">Continuar</button>
+    </div>
+  </div>
+
+  <div id="dead" class="screen hidden">
+    <div class="panel">
+      <h1>Así terminó</h1>
+      <p class="lead" id="dead-cause"></p>
+      <p class="note" id="dead-stats"></p>
+      <button id="btn-retry" class="primary" type="button">Empezar de nuevo</button>
+    </div>
+  </div>
+
+  <div id="rotate-hint">Gira el teléfono para jugar mejor</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="src/util.js"></script>
+  <script src="src/mesher.js"></script>
+  <script src="src/buildings.js"></script>
+  <script src="src/weapons.js"></script>
+  <script src="src/world.js"></script>
+  <script src="src/worldview.js"></script>
+  <script src="src/models.js"></script>
+  <script src="src/input.js"></script>
+  <script src="src/camera.js"></script>
+  <script src="src/player.js"></script>
+  <script src="src/zombie.js"></script>
+  <script src="src/population.js"></script>
+  <script src="src/combat.js"></script>
+  <script src="src/interact.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>
